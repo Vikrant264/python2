@@ -1,0 +1,177 @@
+Q1. How do you load a CSV file into a Pandas DataFrame?
+Solution : You can load a CSV file into a Pandas DataFrame using the read_csv() function:
+
+import pandas as pd
+
+df = pd.read_csv('filename.csv')
+
+Q2. How do you check the data type of a column in a Pandas DataFrame?
+Solution :
+
+	    You can check the data type of a column in a Pandas DataFrame by using the 	 	    `dtypes` attribute. For example, if you have a dataframe called `df`, you could 	    check the data type of the column called `my_column` with the following code:
+
+`df['my_column'].dtypes`
+
+Q3. How do you select rows from a Pandas DataFrame based on a condition?
+Solution :You can select rows from a Pandas DataFrame by using the following syntax:
+
+`df[df['column_name'] condition]`
+
+For example, if you wanted to select all rows from a DataFrame where the value in the column ‘Age’ is greater than 10, you could use the following syntax:
+
+`df[df['Age'] > 10]`
+
+Q4. How do you rename columns in a Pandas DataFrame?
+Solution :You can rename columns in a Pandas DataFrame using the df.rename() method. For example, if you wanted to rename the 'Column1' column to 'NewColumnName', you could use the following syntax: 
+
+df.rename(columns={'Column1': 'NewColumnName'}, inplace=True)
+
+Q5. How do you drop columns in a Pandas DataFrame?
+Solution :You can drop columns in a Pandas DataFrame by using the DataFrame.drop() method.
+
+For example:
+
+df = df.drop(columns=['column_name1', 'column_name2'])
+
+Q6. How do you find the unique values in a column of a Pandas DataFrame?
+Solution :You can use the Pandas DataFrame's unique() function to return the unique values in a column of a Pandas DataFrame. For example:
+
+data = {'Name': ['John', 'Mandy', 'Jane', 'John', 'Mandy'],
+        'Age': [25, 30, 25, 25, 30]}
+
+df = pd.DataFrame(data)
+
+unique_values = df['Name'].unique()
+print(unique_values)
+
+# Output: ['John' 'Mandy' 'Jane']
+
+Q7. How do you find the number of missing values in each column of a Pandas DataFrame?
+Solution :You can use the Pandas DataFrame method 'isnull' to find the number of missing values in each column.
+
+Example:
+
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({'A':[1,2,3,4,5], 'B':[None, None, None, 4, 5], 'C':[7,8,None,10,11]})
+
+# Count the number of missing values in each column
+df.isnull().sum()
+
+# Output
+A    0
+B    3
+C    1
+dtype: int64
+
+Q8. How do you fill missing values in a Pandas DataFrame with a specific value?
+Solution :
+You can use the fillna() method to fill missing values in a Pandas DataFrame with a specific value. For example: 
+
+df.fillna(0)
+
+This will replace all the missing values in the dataframe with 0.
+
+Q9. How do you concatenate two Pandas DataFrames?
+Solution :You can concatenate two Pandas DataFrames by using the concat() function. The syntax is as follows:
+
+pd.concat([df1, df2], axis=0, ignore_index=True)
+
+Where df1 and df2 are the two DataFrames, axis=0 indicates that the DataFrames should be concatenated along the row axis, and ignore_index=True indicates that the index values should be ignored in the result.
+
+Q10. How do you merge two Pandas DataFrames on a specific column?
+Solution :
+The following code can be used to merge two Pandas DataFrames on a specific column:
+
+pd.merge(df1, df2, on='column_name')
+
+Q11. How do you group data in a Pandas DataFrame by a specific column and apply an aggregation function?
+Solution :
+You can use the Pandas `groupby` function. For example, if you wish to group the data in a DataFrame by the 'City' column and apply an aggregation function like the mean, you could write:
+
+`df.groupby('City').mean()`
+
+Q12. How do you pivot a Pandas DataFrame?
+Solution :
+You can pivot a Pandas DataFrame by using the "pivot_table" method. The syntax is:
+
+DataFrame.pivot_table(index, columns, values)
+
+Where "index" is the column name you want to use as the index of the DataFrame, "columns" is the column name you want to use as the columns of the DataFrame, and "values" is the column name you want to use as the values of the DataFrame.
+
+Q13. How do you change the data type of a column in a Pandas DataFrame?
+Solution :
+You can change the data type of a column in a Pandas DataFrame by using the astype() function. For example, to change the data type of the "Name" column to string, you would use the following code:
+
+df["Name"] = df["Name"].astype(str)
+
+Q14. How do you sort a Pandas DataFrame by a specific column?
+Solution :
+You can sort a Pandas DataFrame by a specific column by using the DataFrame.sort_values() method. This method takes in the column name as a parameter and sorts the DataFrame according to the values in that column.
+
+Example:
+
+df.sort_values('column_name')
+
+Q15. How do you create a copy of a Pandas DataFrame?
+Solution :
+You can create a copy of a Pandas DataFrame by using the .copy() method. For example, df2 = df1.copy() will create a new DataFrame called df2 that is a copy of df1.
+
+Q16. How do you filter rows of a Pandas DataFrame by multiple conditions?
+Solution :
+You can filter rows of a Pandas DataFrame by multiple conditions using the "&" operator, as shown below:
+
+df[(condition1) & (condition2) & (condition3)]
+
+For example, if you wanted to filter a dataframe by rows that have a specific value in the 'Name' column and a specific value in the 'Age' column, you could use the following code:
+
+df[(df['Name'] == 'John') & (df['Age'] == 30)]
+
+
+Q17. How do you calculate the mean of a column in a Pandas DataFrame?
+Solution :
+You can calculate the mean of a column in a Pandas DataFrame using the ‘mean’ method. For example, if the column is called ‘column_name’:
+
+df['column_name'].mean()
+
+Q18. How do you calculate the standard deviation of a column in a Pandas DataFrame?
+Solution :
+You can calculate the standard deviation of a column in a Pandas DataFrame by using the .std() method. For example, if you have a DataFrame called df, and a column called 'column_name', you could calculate the standard deviation by using the following syntax: df['column_name'].std()
+
+Q19. How do you calculate the correlation between two columns in a Pandas DataFrame?
+Solution :
+The Pandas DataFrame.corr() method can be used to calculate the correlation between two columns in a Pandas DataFrame. This method returns a correlation matrix with the correlation coefficient for each pair of columns in the DataFrame.
+
+Q20. How do you select specific columns in a DataFrame using their labels?
+Solution :
+You can use the DataFrame's bracket notation with the column labels as keys, for example:
+
+df[['column1', 'column2']]
+
+Q21. How do you select specific rows in a DataFrame using their indexes?
+Solution :
+You can select specific rows in a DataFrame using their indexes by using the `.iloc` indexer. For example, to select the first two rows of a DataFrame, you would use the following syntax:
+
+`df.iloc[:2]`
+
+Q22. How do you sort a DataFrame by a specific column?
+Solution :
+You can sort a DataFrame by a specific column by using the DataFrame.sort_values() method. This method takes the column name as an argument and returns a DataFrame sorted by that column. For example, the following code will sort the DataFrame df by the column 'name':
+
+df.sort_values('name')
+
+Q23. How do you create a new column in a DataFrame based on the values of another column?
+Solution :
+You can create a new column in a DataFrame based on the values of another column by using the assign method. For example:
+
+df = df.assign(new_column_name=df['original_column_name'].apply(lambda x: x*2))
+
+Q24. How do you remove duplicates from a DataFrame?
+Solution :
+You can remove duplicates from a DataFrame using the drop_duplicates() method. This method takes a subset argument, which is used to specify which columns to identify duplicates on. You can also use the keep argument to specify whether to keep the first or last duplicate record.
+
+One way to remove duplicates from a DataFrame is to use the `.drop_duplicates()` method on the DataFrame. This method will return a DataFrame with the duplicate rows removed. You can also specify a subset of columns to check for duplicates on. For example, you can use `df.drop_duplicates(subset=["column_name_1", "column_name_2"])` to drop duplicate rows based on the values in column_name_1 and column_name_2.
+
+Q25. What is the difference between .loc and .iloc in Pandas?
+Solution :.loc is a label based indexer for selection by label, while .iloc is an integer position based indexer for selection by position. .loc is used for selecting rows by labels, while .iloc is used for selecting rows by integer position.
